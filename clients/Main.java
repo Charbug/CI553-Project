@@ -51,7 +51,7 @@ class Main {
      *
      * @param mlf A factory to create objects to access the stock list
      */
-    public void startCustomerGUI_MVC(MiddleFactory mlf) {
+    public void startCustomerGUI_MVC(MiddleFactory mlf) throws StockException {
         JFrame window = new JFrame();
         window.setTitle("Customer Client MVC");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,6 +61,7 @@ class Main {
         CustomerView view = new CustomerView(window, mlf, pos.width, pos.height);
         CustomerController cont = new CustomerController(model, view);
         view.setController(cont);
+        view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model, ---view is observer, model is Observable
         window.setVisible(true);         // start Screen

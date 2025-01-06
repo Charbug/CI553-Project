@@ -9,6 +9,7 @@ import middle.StockException;
 import middle.StockReader;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -130,5 +131,29 @@ public class CustomerModel extends Observable
   {
     return new Basket();
   }
+
+
+  /* Creating Array of Product ID's to populate Combo Box in view */
+  public String[] generateComboItems() throws StockException {
+    ArrayList<String> output = new ArrayList<String>();
+    boolean comboFull = false; /* Flag for while loop, set true when ID not found in database */
+    int index = 1; /* Index starts at 1 as first product ID is '0001' */
+
+    while (!comboFull) {
+      String productID = "000" + String.valueOf(index); /* Appending leading 0s for ID */
+      productID = productID.substring(productID.length()-4);  /* sets ID to 4 digits, trimming excess 0s */
+
+      /* Checks ID is in database, adds to combo if it is, or ends while loop if it's not */
+      if (theStock.exists(productID)) {
+        output.add(productID);
+      } else {
+        comboFull = true;
+      }
+      index++;
+
+    }
+    return output.toArray(new String[0]);
+  }
+
 }
 
