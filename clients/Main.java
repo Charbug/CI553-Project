@@ -12,6 +12,9 @@ import clients.customer.CustomerView;
 import clients.packing.PackingController;
 import clients.packing.PackingModel;
 import clients.packing.PackingView;
+import clients.splash.SplashController;
+import clients.splash.SplashModel;
+import clients.splash.SplashView;
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
 import middle.StockException;
@@ -39,11 +42,7 @@ class Main {
     public void begin() throws StockException {
         //DEBUG.set(true); /* Lots of debug info */
         MiddleFactory mlf = new LocalMiddleFactory();  // Direct access
-        startCustomerGUI_MVC(mlf);
-        startCashierGUI_MVC(mlf);
-        startCashierGUI_MVC(mlf); // you can create multiple clients
-        startPackingGUI_MVC(mlf);
-        startBackDoorGUI_MVC(mlf);
+        startSplashGUI_MVC(mlf);
     }
 
     /**
@@ -51,9 +50,9 @@ class Main {
      *
      * @param mlf A factory to create objects to access the stock list
      */
-    public void startCustomerGUI_MVC(MiddleFactory mlf) throws StockException {
-        JFrame window = new JFrame();
-        window.setTitle("Customer Client MVC");
+    public void startCustomerGUI_MVC(MiddleFactory mlf, JFrame window) throws StockException {
+        Frame customerFrame = new Frame();
+        customerFrame.setTitle("Customer Client MVC");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension pos = PosOnScrn.getPos();
 
@@ -64,7 +63,7 @@ class Main {
         view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model, ---view is observer, model is Observable
-        window.setVisible(true);         // start Screen
+        customerFrame.setVisible(false);         // start Screen
     }
 
     /**
@@ -131,5 +130,30 @@ class Main {
         model.addObserver(view);       // Add observer to the model
         window.setVisible(true);         // Make window visible
     }
+
+    /**
+     * start the BackDoor client - store staff to check and update stock
+     *
+     * @param mlf A factory to create objects to access the stock list
+     */
+    public void startSplashGUI_MVC(MiddleFactory mlf) {
+        JFrame window = new JFrame();
+        window.setTitle("Splash Screen MVC");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Dimension pos = PosOnScrn.getPos();
+
+        SplashModel model = new SplashModel(mlf);
+        SplashView view = new SplashView(window, mlf, pos.width, pos.height);
+        SplashController cont = new SplashController(model, view);
+        view.setController(cont);
+
+        model.addObserver(view);       // Add observer to the model
+
+
+
+        window.setVisible(true);         // Make window visible
+    }
+
+
 
 }
