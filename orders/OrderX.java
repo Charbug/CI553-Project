@@ -1,7 +1,7 @@
 
 package orders;
 
-import catalogue.Basket;
+import catalogue.BetterBasket;
 import catalogue.Product;
 import debug.DEBUG;
 import middle.OrderException;
@@ -36,20 +36,20 @@ public class OrderX implements OrderProcessing
 {
   private static int theNextNumber = 1;          // Start at 1
   // Orders entered but waiting to be processed (picked)
-  private ArrayList<Basket>  theWaitingTray = new ArrayList<Basket>();
+  private ArrayList<BetterBasket>  theWaitingTray = new ArrayList<BetterBasket>();
 
   // Orders being processed (currently being picked)
-  private ArrayList<Basket>  theBeingPickedTray = new ArrayList<Basket>();
+  private ArrayList<BetterBasket>  theBeingPickedTray = new ArrayList<BetterBasket>();
 
   // Orders waiting to be collected by the customer
-  private ArrayList<Basket>  theToBeCollectedTray = new ArrayList<Basket>();
+  private ArrayList<BetterBasket>  theToBeCollectedTray = new ArrayList<BetterBasket>();
 
   /**
    * Used to generate debug information
    * @Param  basket an instance of a basket
    * @Return Description of contents
    */
-  private String asString( Basket basket )
+  private String asString( BetterBasket basket )
   {
     StringBuilder sb = new StringBuilder(1024);
     Formatter     fr = new Formatter(sb);
@@ -77,13 +77,13 @@ public class OrderX implements OrderProcessing
    * Add a new order to the order processing system
    * @param bought a new order that is to be processed
    */ 
-  public synchronized void newOrder( Basket bought )
+  public synchronized void newOrder( BetterBasket bought )
          throws OrderException
   {
     // You need to modify and fill in the correct code
     DEBUG.trace( "DEBUG: New order" );
     theWaitingTray.add( bought );
-    for ( Basket bl : theWaitingTray )
+    for ( BetterBasket bl : theWaitingTray )
     {
       DEBUG.trace( "Order: " + asString( bl ) );
     }
@@ -95,14 +95,14 @@ public class OrderX implements OrderProcessing
    * @return An order to pick.
    */
 
-  public synchronized Basket getOrderToPack()
+  public synchronized BetterBasket getOrderToPack()
          throws OrderException
   {
     // You need to modify and fill in the correct code
     DEBUG.trace( "DEBUG: Get order to pack" );
     if ( theWaitingTray.size() > 0 )
     {
-      Basket process = theWaitingTray.remove(0);
+      BetterBasket process = theWaitingTray.remove(0);
        theBeingPickedTray.add( process );
        return process;
     }
@@ -126,7 +126,7 @@ public class OrderX implements OrderProcessing
     {
       if ( theBeingPickedTray.get(i).getOrderNum() == orderNum )
       {
-        Basket picked = theBeingPickedTray.remove(i);
+        BetterBasket picked = theBeingPickedTray.remove(i);
         theToBeCollectedTray.add( picked );
         return true;
       }
@@ -181,10 +181,10 @@ public class OrderX implements OrderProcessing
     return res;
   }
   
-  private List< Integer > orderNos( ArrayList<Basket> queue )
+  private List< Integer > orderNos( ArrayList<BetterBasket> queue )
   {
     List <Integer> res = new ArrayList<Integer>();
-    for ( Basket sb: queue )
+    for ( BetterBasket sb: queue )
     {
       res.add( sb.getOrderNum() );
     }

@@ -1,6 +1,6 @@
 package middle;
 
-import catalogue.Basket;
+import catalogue.BetterBasket;
 
 import java.util.List;
 import java.util.Map;
@@ -14,13 +14,13 @@ import java.util.Map;
 public interface OrderProcessing
 {
                                                    // Used by
-  public void newOrder(Basket bought)              // Cashier
+  public void newOrder(BetterBasket bought)              // Cashier
          throws OrderException;
 
   public int  uniqueNumber()                       // Cashier
          throws OrderException;
    
-  public Basket getOrderToPack()                   // Packer
+  public BetterBasket getOrderToPack()                   // Packer
          throws OrderException;
  
   public boolean informOrderPacked(int orderNum)   // Packer 

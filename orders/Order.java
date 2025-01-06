@@ -1,6 +1,6 @@
 package orders;
 
-import catalogue.Basket;
+import catalogue.BetterBasket;
 import catalogue.Product;
 import debug.DEBUG;
 import middle.OrderException;
@@ -31,9 +31,9 @@ public class Order implements OrderProcessing
   private class Folder
   {
     private State  stateIs;       // Order state
-    private Basket basket;        // For this basket
+    private BetterBasket basket;        // For this basket
     
-    public Folder( Basket anOrder )
+    public Folder( BetterBasket anOrder )
     {
       stateIs = State.Waiting;
       basket  = anOrder;
@@ -41,7 +41,7 @@ public class Order implements OrderProcessing
 
     public State getState()                { return this.stateIs; }
 
-    public Basket getBasket()              { return this.basket; }
+    public BetterBasket getBasket()              { return this.basket; }
 
     public void newState( State newState ) { stateIs = newState; }
   }
@@ -55,7 +55,7 @@ public class Order implements OrderProcessing
    * @param  basket an instance of a basket
    * @return Description of contents
    */
-  private String asString( Basket basket )
+  private String asString( BetterBasket basket )
   {
     StringBuilder sb = new StringBuilder(1024);
     Formatter     fr = new Formatter(sb);
@@ -84,7 +84,7 @@ public class Order implements OrderProcessing
    * Add a new order to the order processing system
    * @param bought A new order that is to be processed
    */ 
-  public synchronized void newOrder( Basket bought )
+  public synchronized void newOrder( BetterBasket bought )
          throws OrderException
   {
     DEBUG.trace( "DEBUG: New order" );
@@ -99,11 +99,11 @@ public class Order implements OrderProcessing
    * Returns an order to pack from the warehouse.
    * @return An order to pack or null if no order
    */
-  public synchronized Basket getOrderToPack()
+  public synchronized BetterBasket getOrderToPack()
          throws OrderException
   {
     DEBUG.trace( "DEBUG: Get order to pack" );
-    Basket foundWaiting = null;
+    BetterBasket foundWaiting = null;
     for ( Folder bws : folders )
     {
       if ( bws.getState() == State.Waiting )

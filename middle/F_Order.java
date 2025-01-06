@@ -1,6 +1,6 @@
 package middle;
 
-import catalogue.Basket;
+import catalogue.BetterBasket;
 import debug.DEBUG;
 import remote.RemoteOrder_I;
 
@@ -46,7 +46,7 @@ public class F_Order implements OrderProcessing
   }
 
 
-  public void newOrder( Basket bought )
+  public void newOrder( BetterBasket bought )
          throws OrderException
   {
     DEBUG.trace("F_Order:newOrder()" );
@@ -82,7 +82,7 @@ public class F_Order implements OrderProcessing
    * @return An order to pick
    */
 
-  public synchronized Basket getOrderToPack()
+  public synchronized BetterBasket getOrderToPack()
          throws OrderException
   {
     DEBUG.trace("F_Order:getOrderTioPack()" );

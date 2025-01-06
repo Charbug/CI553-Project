@@ -1,6 +1,6 @@
 package remote;
 
-import catalogue.Basket;
+import catalogue.BetterBasket;
 import middle.OrderException;
 import orders.Order;
 
@@ -29,7 +29,7 @@ public class      R_Order
     aOrder = new Order();
   }
 
-  public void newOrder( Basket bought )
+  public void newOrder( BetterBasket bought )
          throws RemoteException, OrderException
   {
      aOrder.newOrder( bought );
@@ -42,7 +42,7 @@ public class      R_Order
     return aOrder.uniqueNumber();
   }
   
-  public Basket getOrderToPack()
+  public BetterBasket getOrderToPack()
          throws RemoteException, OrderException
   {
       return aOrder.getOrderToPack();
