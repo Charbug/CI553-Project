@@ -14,19 +14,20 @@ public class BetterBasket extends Basket implements Serializable {
 
     @Override
     public boolean add(Product pr) {
-        boolean newProductFlag = true;
+        boolean newProductFlag = true;  /* flag for if item already exists in list, set false when item is found */
 
-        for (Object i: super.toArray()) {
-            Product current = (Product) i;
+        for (Object i: super.toArray()) {  /* Casting Basket to Array to iterate */
+            Product current = (Product) i;  /* Casting current Object back to Product to access its function */
+
+            /* If product exists, flip newProduct flag and increment existing product */
             if (current.getProductNum().equals(pr.getProductNum())) {
                 newProductFlag = false;
                 current.setQuantity(current.getQuantity() + 1);
             }
         }
+        /* Adds item to list if it doesn't exist, else returns false */
         if (newProductFlag) {return super.add(pr);} else {return false;}
     }
 
-    // You need to add code here
-    // merge the items for same product,
-    // or sort the item based on the product number
+
 }
