@@ -44,7 +44,9 @@ class Main {
         MiddleFactory mlf = new LocalMiddleFactory();  // Direct access
         startSplashGUI_MVC(mlf);
         startCustomerGUI_MVC(mlf);
+        startCashierGUI_MVC(mlf);
         startPackingGUI_MVC(mlf);
+        startBackDoorGUI_MVC(mlf);
     }
 
     /**
@@ -66,7 +68,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model, ---view is observer, model is Observable
         window.setVisible(false);         // Make window visible
-        mlf.addFrame("CustomerFrame", window);
+        mlf.addFrame("customerFrame", window);
     }
 
     /**
@@ -87,7 +89,8 @@ class Main {
         view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model
-        window.setVisible(true);         // Make window visible
+        window.setVisible(false);         // Make window visible
+        mlf.addFrame("cashierFrame", window);
         model.askForUpdate();            // Initial display
     }
 
@@ -111,6 +114,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible
+        mlf.addFrame("packingFrame", window);
     }
 
     /**
@@ -131,7 +135,8 @@ class Main {
         view.setController(cont);
 
         model.addObserver(view);       // Add observer to the model
-        window.setVisible(true);         // Make window visible
+        window.setVisible(false);         // Make window visible
+        mlf.addFrame("backdoorFrame", window);
     }
 
     /**
@@ -152,6 +157,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(true);         // Make window visible
+        mlf.addFrame("splashFrame", window);
     }
 
 

@@ -5,6 +5,8 @@
 package middle;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
   * Provide access to middle tier components.
@@ -30,6 +32,7 @@ public class RemoteMiddleFactory implements MiddleFactory
   {
     theOrder_URL = url;
   }
+  public Map<String, JFrame> frameMap = new HashMap<String, JFrame>();
  
   /**
    * Return an object to access the database for read only access.
@@ -50,10 +53,15 @@ public class RemoteMiddleFactory implements MiddleFactory
     return new F_StockRW( theStockRW_URL );
   }
 
-  @Override
   public void addFrame(String name, JFrame frame) {
-
+    frameMap.put(name, frame);
   }
+
+  @Override
+  public JFrame getFrame(String name) {
+    return null;
+  }
+
 
   /**
    * Return an object to access the order processing system.

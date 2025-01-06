@@ -5,7 +5,9 @@ import catalogue.Product;
 import debug.DEBUG;
 import middle.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 
 /**
@@ -14,17 +16,14 @@ import java.util.Observable;
 public class SplashModel extends Observable {
     public void askForUpdate() {
     }
-
     private enum State {process, checked}
 
     private State theState = State.process;   // Current state
-    private Product theProduct = null;            // Current product
-    private BetterBasket theBasket = null;            // Bought items
-
-    private String pn = "";                      // Product being processed
-
     private StockReadWriter theStock = null;
     private OrderProcessing theOrder = null;
+    private MiddleFactory midf = null;
+
+    private HashMap<String, JFrame> screenHashMap = new HashMap<>();
 
     /**
      * Construct the model of the Cashier
@@ -37,6 +36,10 @@ public class SplashModel extends Observable {
         {
             theStock = mf.makeStockReadWriter();        // Database access
             theOrder = mf.makeOrderProcessing();        // Process order
+            midf = mf;
+
+            screenHashMap.put("Cashier", mf.getFrame("cashierFrame"));
+            screenHashMap.put("Splash", mf.getFrame("splashFrame"));
         } catch (Exception e) {
             DEBUG.error("CashierModel.constructor\n%s", e.getMessage());
         }
@@ -80,7 +83,10 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        System.out.println("loadCashier");
+        JFrame frame = midf.getFrame("splashFrame");
+        frame.setVisible(false);
+        frame = midf.getFrame("cashierFrame");
+        frame.setVisible(true);
     }
 
     public void loadCustomer()  {
@@ -119,8 +125,10 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        System.out.println("loadCustomer");
-
+        JFrame frame = midf.getFrame("splashFrame");
+        frame.setVisible(false);
+        frame = midf.getFrame("customerFrame");
+        frame.setVisible(true);
     }
 
     public void loadPacking()  {
@@ -159,7 +167,10 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        System.out.println("loadPacking");
+        JFrame frame = midf.getFrame("splashFrame");
+        frame.setVisible(false);
+        frame = midf.getFrame("packingFrame");
+        frame.setVisible(true);
     }
 
     public void loadBackdoor()  {
@@ -198,7 +209,10 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        System.out.println("loadBackdoor");
+        JFrame frame = midf.getFrame("splashFrame");
+        frame.setVisible(false);
+        frame = midf.getFrame("backdoorFrame");
+        frame.setVisible(true);
     }
 
 

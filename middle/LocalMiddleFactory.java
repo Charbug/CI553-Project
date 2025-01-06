@@ -70,5 +70,9 @@ public class LocalMiddleFactory implements MiddleFactory
   public void addFrame(String name, JFrame frame){
     frameMap.put(name, frame);
   }
+
+  public JFrame getFrame(String name){
+    return frameMap.get(name);
+  }
 }
 
