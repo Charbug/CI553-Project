@@ -6,6 +6,9 @@
 
 package middle;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
   * Provide access to middle tier components.
   */
@@ -29,7 +32,7 @@ public interface MiddleFactory
    */
   public StockReadWriter makeStockReadWriter() throws StockException;
 
-  
+  public void addFrame(String name, JFrame frame);
   /**
    * Return an object to access the order processing system
    * @return instance of OrderProcessing

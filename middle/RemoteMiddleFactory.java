@@ -4,6 +4,8 @@
  */
 package middle;
 
+import javax.swing.*;
+
 /**
   * Provide access to middle tier components.
   */
@@ -47,7 +49,12 @@ public class RemoteMiddleFactory implements MiddleFactory
   {
     return new F_StockRW( theStockRW_URL );
   }
-  
+
+  @Override
+  public void addFrame(String name, JFrame frame) {
+
+  }
+
   /**
    * Return an object to access the order processing system.
    * Access is via RMI

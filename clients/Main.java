@@ -43,6 +43,8 @@ class Main {
         //DEBUG.set(true); /* Lots of debug info */
         MiddleFactory mlf = new LocalMiddleFactory();  // Direct access
         startSplashGUI_MVC(mlf);
+        startCustomerGUI_MVC(mlf);
+        startPackingGUI_MVC(mlf);
     }
 
     /**
@@ -50,9 +52,9 @@ class Main {
      *
      * @param mlf A factory to create objects to access the stock list
      */
-    public void startCustomerGUI_MVC(MiddleFactory mlf, JFrame window) throws StockException {
-        Frame customerFrame = new Frame();
-        customerFrame.setTitle("Customer Client MVC");
+    public void startCustomerGUI_MVC(MiddleFactory mlf) throws StockException {
+        JFrame window = new JFrame();
+        window.setTitle("Customer Client MVC");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension pos = PosOnScrn.getPos();
 
@@ -63,7 +65,8 @@ class Main {
         view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model, ---view is observer, model is Observable
-        customerFrame.setVisible(false);         // start Screen
+        window.setVisible(false);         // Make window visible
+        mlf.addFrame("CustomerFrame", window);
     }
 
     /**
@@ -96,7 +99,7 @@ class Main {
 
     public void startPackingGUI_MVC(MiddleFactory mlf) {
         JFrame window = new JFrame();
-
+        window.setVisible(false);         // Make window visible
         window.setTitle("Packing Client MVC");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension pos = PosOnScrn.getPos();
@@ -107,7 +110,7 @@ class Main {
         view.setController(cont);
 
         model.addObserver(view);       // Add observer to the model
-        window.setVisible(true);         // Make window visible
+        window.setVisible(false);         // Make window visible
     }
 
     /**
@@ -148,9 +151,6 @@ class Main {
         view.setController(cont);
 
         model.addObserver(view);       // Add observer to the model
-
-
-
         window.setVisible(true);         // Make window visible
     }
 

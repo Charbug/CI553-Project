@@ -9,6 +9,11 @@ import dbAccess.StockR;
 import dbAccess.StockRW;
 import orders.Order;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
   * Provide access to middle tier components.
@@ -22,6 +27,9 @@ public class LocalMiddleFactory implements MiddleFactory
   private static StockR  aStockR  = null;
   private static StockRW aStockRW = null;
   private static Order   aOrder   = null;
+
+  /* Hash Map of frames, allows for screen navigation */
+  public Map<String, JFrame> frameMap = new HashMap<String, JFrame>();
   
   /**
    * Return an object to access the database for read only access.
@@ -57,6 +65,10 @@ public class LocalMiddleFactory implements MiddleFactory
     if ( aOrder == null )
       aOrder = new Order();
     return aOrder;
+  }
+
+  public void addFrame(String name, JFrame frame){
+    frameMap.put(name, frame);
   }
 }
 

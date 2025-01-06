@@ -15,8 +15,8 @@ class PosOnScrn
   private static final int maxX;  // Width of screen
   private static final int maxY;  // Height of screen
   
-  private static int cX = 0; // Initial window pos on screen
-  private static int cY = 0; // Initial window pos on screen
+  private static int cX = 500; // Initial window pos on screen
+  private static int cY = 200; // Initial window pos on screen
   
   // class initialiser
   //  Will be called (once) when the class is loaded
@@ -54,7 +54,6 @@ class PosOnScrn
   public static Dimension getPos()
   {
     Dimension pos = new Dimension( cX, cY );
-    next();
     return pos;
   }
 }
