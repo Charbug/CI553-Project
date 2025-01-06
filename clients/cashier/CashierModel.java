@@ -5,6 +5,7 @@ import catalogue.Product;
 import debug.DEBUG;
 import middle.*;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -182,6 +183,24 @@ public class CashierModel extends Observable {
      */
     protected BetterBasket makeBasket() {
         return new BetterBasket();
+    }
+
+    public String[] generateComboItems() throws StockException {
+        ArrayList<String> output = new ArrayList<String>();
+        boolean comboFull = false;
+        int index = 1;
+        while (!comboFull) {
+            String productID = "000" + String.valueOf(index);
+            productID = productID.substring(productID.length()-4);
+            if (theStock.exists(productID)) {
+                output.add(productID);
+            } else {
+                comboFull = true;
+            }
+            index++;
+
+        }
+        return output.toArray(new String[0]);
     }
 }
   

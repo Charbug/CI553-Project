@@ -14,6 +14,7 @@ import clients.packing.PackingModel;
 import clients.packing.PackingView;
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
+import middle.StockException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,14 +29,14 @@ import java.awt.*;
  */
 
 class Main {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws StockException {
         new Main().begin();
     }
 
     /**
      * Starts the system (Non distributed)
      */
-    public void begin() {
+    public void begin() throws StockException {
         //DEBUG.set(true); /* Lots of debug info */
         MiddleFactory mlf = new LocalMiddleFactory();  // Direct access
         startCustomerGUI_MVC(mlf);
@@ -70,7 +71,7 @@ class Main {
      *
      * @param mlf A factory to create objects to access the stock list
      */
-    public void startCashierGUI_MVC(MiddleFactory mlf) {
+    public void startCashierGUI_MVC(MiddleFactory mlf) throws StockException {
         JFrame window = new JFrame();
         window.setTitle("Cashier Client MVC");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,6 +81,7 @@ class Main {
         CashierView view = new CashierView(window, mlf, pos.width, pos.height);
         CashierController cont = new CashierController(model, view);
         view.setController(cont);
+        view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(true);         // Make window visible
