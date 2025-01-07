@@ -37,6 +37,6 @@ public class CustomerController
     model.doClear();
   }
 
-  
+  public void returnButton() { model.returnButton(); }
 }
 

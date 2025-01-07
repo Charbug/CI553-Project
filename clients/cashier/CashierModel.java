@@ -22,6 +22,7 @@ public class CashierModel extends Observable {
 
     private StockReadWriter theStock = null;
     private OrderProcessing theOrder = null;
+    private MiddleFactory  midFact   = null;
 
     /**
      * Construct the model of the Cashier
@@ -34,6 +35,7 @@ public class CashierModel extends Observable {
         {
             theStock = mf.makeStockReadWriter();        // Database access
             theOrder = mf.makeOrderProcessing();        // Process order
+            midFact = mf;
         } catch (Exception e) {
             DEBUG.error("CashierModel.constructor\n%s", e.getMessage());
         }
@@ -205,6 +207,11 @@ public class CashierModel extends Observable {
 
         }
         return output.toArray(new String[0]);
+    }
+    public void returnButton() {
+        midFact.getFrame("backdoorFrame").setVisible(false);
+        midFact.getFrame("splashFrame").setVisible(true);
+
     }
 }
   

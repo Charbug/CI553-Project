@@ -61,25 +61,25 @@ public class SplashView implements Observer
     cp.add(pageTitle);
 
       JButton theBtCustomer = new JButton(CUSTOMER);
-      theBtCustomer.setBounds( 16, 25, 80, 40 );    // Check Button
+      theBtCustomer.setBounds( 50, 50, 80, 40 );    // Check Button
     theBtCustomer.addActionListener(                   // Call back code
       e -> cont.loadCustomer());
     cp.add(theBtCustomer);                           //  Add to canvas
 
       JButton theBtCashier = new JButton(CASHIER);
-      theBtCashier.setBounds( 16, 25+ 60, 80, 40 );      // Buy button
+      theBtCashier.setBounds( 250, 50, 80, 40 );      // Buy button
     theBtCashier.addActionListener(                     // Call back code
       e -> cont.loadCashier());
     cp.add(theBtCashier);                             //  Add to canvas
 
       JButton theBtPacking = new JButton(PACKING);
-      theBtPacking.setBounds( 16, 25+60*2, 80, 40 );   // Bought Button
+      theBtPacking.setBounds( 50, 200, 80, 40 );   // Bought Button
     theBtPacking.addActionListener(                  // Call back code
             e -> cont.loadPacking() );
     cp.add(theBtPacking);                          //  Add to canvas
 
       JButton theBtBackdoor = new JButton(BACKDOOR);
-      theBtBackdoor.setBounds( 16, 25+60*3, 80, 40 );   // Bought Button
+      theBtBackdoor.setBounds( 250, 200, 80, 40 );   // Bought Button
     theBtBackdoor.addActionListener(                  // Call back code
             e -> cont.loadBackdoor() );
     cp.add(theBtBackdoor);                          //  Add to canvas

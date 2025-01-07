@@ -25,6 +25,7 @@ public class CustomerModel extends Observable
   private StockReader     theStock     = null;
   private OrderProcessing theOrder     = null;
   private ImageIcon       thePic       = null;
+  private MiddleFactory  midFact   = null;
 
   /*
    * Construct the model of the Customer
@@ -33,7 +34,8 @@ public class CustomerModel extends Observable
   public CustomerModel(MiddleFactory mf)
   {
     try                                          // 
-    {  
+    {
+      midFact = mf;
       theStock = mf.makeStockReader();           // Database access
     } catch ( Exception e )
     {
@@ -155,5 +157,9 @@ public class CustomerModel extends Observable
     return output.toArray(new String[0]);
   }
 
-}
+  public void returnButton() {
+    midFact.getFrame("backdoorFrame").setVisible(false);
+    midFact.getFrame("splashFrame").setVisible(true);
+
+  }}
 

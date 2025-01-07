@@ -45,4 +45,6 @@ public class CashierController
   {
     model.doBought();
   }
+
+  public void returnButton() { model.returnButton(); }
 }
