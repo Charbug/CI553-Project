@@ -17,7 +17,9 @@ public class BackDoorView implements Observer
   private static final String RESTOCK  = "Add";
   private static final String CLEAR    = "Clear";
   private static final String QUERY    = "Query";
- 
+  private static final String RETURN    = "Return";
+
+
   private static final int H = 300;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
 
@@ -30,7 +32,9 @@ public class BackDoorView implements Observer
   private final JButton     theBtClear = new JButton( CLEAR );
   private final JButton     theBtRStock = new JButton( RESTOCK );
   private final JButton     theBtQuery = new JButton( QUERY );
-  
+  private final JButton     theBtReturn = new JButton( RETURN );
+
+
   private StockReadWriter theStock     = null;
   private BackDoorController cont= null;
 
@@ -78,7 +82,12 @@ public class BackDoorView implements Observer
       e -> cont.doClear() );
     cp.add( theBtClear );                           //  Add to canvas
 
- 
+    theBtReturn.setBounds( 16, 25+60*3, 80, 40 );    // Buy button
+    theBtReturn.addActionListener(                   // Call back code
+            e -> cont.returnButton() );
+    cp.add( theBtReturn );                           //  Add to canvas
+
+
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas

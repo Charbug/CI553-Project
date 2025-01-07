@@ -21,7 +21,7 @@ public class SplashModel extends Observable {
     private State theState = State.process;   // Current state
     private StockReadWriter theStock = null;
     private OrderProcessing theOrder = null;
-    private MiddleFactory midf = null;
+    private MiddleFactory midFact = null;
 
     private HashMap<String, JFrame> screenHashMap = new HashMap<>();
 
@@ -36,7 +36,7 @@ public class SplashModel extends Observable {
         {
             theStock = mf.makeStockReadWriter();        // Database access
             theOrder = mf.makeOrderProcessing();        // Process order
-            midf = mf;
+            midFact = mf;
 
             screenHashMap.put("Cashier", mf.getFrame("cashierFrame"));
             screenHashMap.put("Splash", mf.getFrame("splashFrame"));
@@ -83,9 +83,9 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        JFrame frame = midf.getFrame("splashFrame");
+        JFrame frame = midFact.getFrame("splashFrame");
         frame.setVisible(false);
-        frame = midf.getFrame("cashierFrame");
+        frame = midFact.getFrame("cashierFrame");
         frame.setVisible(true);
     }
 
@@ -125,9 +125,9 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        JFrame frame = midf.getFrame("splashFrame");
+        JFrame frame = midFact.getFrame("splashFrame");
         frame.setVisible(false);
-        frame = midf.getFrame("customerFrame");
+        frame = midFact.getFrame("customerFrame");
         frame.setVisible(true);
     }
 
@@ -167,9 +167,9 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        JFrame frame = midf.getFrame("splashFrame");
+        JFrame frame = midFact.getFrame("splashFrame");
         frame.setVisible(false);
-        frame = midf.getFrame("packingFrame");
+        frame = midFact.getFrame("packingFrame");
         frame.setVisible(true);
     }
 
@@ -209,9 +209,9 @@ public class SplashModel extends Observable {
         setChanged();
         notifyObservers(theAction);
  */
-        JFrame frame = midf.getFrame("splashFrame");
+        JFrame frame = midFact.getFrame("splashFrame");
         frame.setVisible(false);
-        frame = midf.getFrame("backdoorFrame");
+        frame = midFact.getFrame("backdoorFrame");
         frame.setVisible(true);
     }
 

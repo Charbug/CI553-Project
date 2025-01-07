@@ -19,6 +19,7 @@ public class BackDoorModel extends Observable
   private String      pn = "";                      // Product being processed
 
   private StockReadWriter theStock     = null;
+  private MiddleFactory  midFact   = null;
 
   /*
    * Construct the model of the back door client
@@ -30,6 +31,7 @@ public class BackDoorModel extends Observable
     try                                           // 
     {      
       theStock = mf.makeStockReadWriter();        // Database access
+      midFact = mf;
     } catch ( Exception e )
     {
       DEBUG.error("CustomerModel.constructor\n%s", e.getMessage() );
@@ -148,6 +150,12 @@ public class BackDoorModel extends Observable
   protected Basket makeBasket()
   {
     return new Basket();
+  }
+
+  public void returnButton() {
+    midFact.getFrame("backdoorFrame").setVisible(false);
+    midFact.getFrame("splashFrame").setVisible(true);
+
   }
 }
 
