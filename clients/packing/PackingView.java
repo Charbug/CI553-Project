@@ -17,6 +17,8 @@ import java.util.Observer;
 public class PackingView implements Observer
 {
   private static final String PACKED = "Packed";
+  private static final String RETURN = "Return";
+
 
   private static final int H = 300;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
@@ -26,7 +28,9 @@ public class PackingView implements Observer
   private final JTextArea   theOutput  = new JTextArea();
   private final JScrollPane theSP      = new JScrollPane();
   private final JButton     theBtPack= new JButton( PACKED );
- 
+  private final JButton     theBtReturn= new JButton( RETURN );
+
+
   private OrderProcessing theOrder     = null;
   
   private PackingController cont= null;
@@ -59,10 +63,16 @@ public class PackingView implements Observer
     pageTitle.setText( "Packing Bought Order" );                        
     cp.add( pageTitle );
 
-    theBtPack.setBounds( 16, 25+60*0, 80, 40 );   // Check Button
+    theBtPack.setBounds( 16, 25, 80, 40 );   // Check Button
     theBtPack.addActionListener(                   // Call back code
       e -> cont.doPacked() );
     cp.add( theBtPack );                          //  Add to canvas
+
+    theBtReturn.setBounds( 16, 25+60*3, 80, 40 );   // Check Button
+    theBtReturn.addActionListener(                   // Call back code
+            e -> cont.returnButton() );
+    cp.add( theBtReturn );                          //  Add to canvas
+
 
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank

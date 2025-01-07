@@ -23,6 +23,7 @@ public class PackingModel extends Observable
   private String          theAction  = "";
   
   private StateOf         worker   = new StateOf();
+  private MiddleFactory  midFact   = null;
 
   /*
    * Construct the model of the warehouse Packing client
@@ -34,6 +35,7 @@ public class PackingModel extends Observable
     {      
       theStock = mf.makeStockReadWriter();  // Database access
       theOrder = mf.makeOrderProcessing();  // Process order
+      midFact = mf;
     } catch ( Exception e )
     {
       DEBUG.error("CustomerModel.constructor\n%s", e.getMessage() );
@@ -146,6 +148,12 @@ public class PackingModel extends Observable
                             e.getMessage() ); //  happen
     }
     setChanged(); notifyObservers(theAction);
+  }
+
+  public void returnButton() {
+    midFact.getFrame("backdoorFrame").setVisible(false);
+    midFact.getFrame("splashFrame").setVisible(true);
+
   }
 }
 
