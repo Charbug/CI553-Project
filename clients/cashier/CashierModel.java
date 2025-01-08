@@ -209,7 +209,7 @@ public class CashierModel extends Observable {
         return output.toArray(new String[0]);
     }
     public void returnButton() {
-        midFact.getFrame("backdoorFrame").setVisible(false);
+        midFact.getFrame("cashierFrame").setVisible(false);
         midFact.getFrame("splashFrame").setVisible(true);
 
     }

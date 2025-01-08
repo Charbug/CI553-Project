@@ -151,7 +151,7 @@ public class PackingModel extends Observable
   }
 
   public void returnButton() {
-    midFact.getFrame("backdoorFrame").setVisible(false);
+    midFact.getFrame("packingFrame").setVisible(false);
     midFact.getFrame("splashFrame").setVisible(true);
 
   }

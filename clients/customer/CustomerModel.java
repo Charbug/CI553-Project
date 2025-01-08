@@ -158,7 +158,7 @@ public class CustomerModel extends Observable
   }
 
   public void returnButton() {
-    midFact.getFrame("backdoorFrame").setVisible(false);
+    midFact.getFrame("customerFrame").setVisible(false);
     midFact.getFrame("splashFrame").setVisible(true);
 
   }}
