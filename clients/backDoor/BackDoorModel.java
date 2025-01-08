@@ -8,6 +8,7 @@ import middle.MiddleFactory;
 import middle.StockException;
 import middle.StockReadWriter;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -92,8 +93,10 @@ public class BackDoorModel extends Observable
    * @param productNum The product number of the item
    * @param quantity How many to be added
    */
-  public void doRStock(String productNum, String quantity )
+  public void doRStock(String productNum, Object quantity )
   {
+    int intQuantity = (int)quantity;
+    String strQuantity = String.valueOf(intQuantity);
     String theAction = "";
     theBasket = makeBasket();
     pn  = productNum.trim();                    // Product no.
@@ -101,7 +104,7 @@ public class BackDoorModel extends Observable
     int amount = 0;
     try
     {
-      String aQuantity = quantity.trim();
+      String aQuantity = strQuantity.trim();
       try
       {
         amount = Integer.parseInt(aQuantity);   // Convert
@@ -140,7 +143,8 @@ public class BackDoorModel extends Observable
     String theAction = "";
     theBasket.clear();                        // Clear s. list
     theAction = "Enter Product Number";       // Set display
-    setChanged(); notifyObservers(theAction);  // inform the observer view that model changed
+    setChanged();
+    notifyObservers(theAction);  // inform the observer view that model changed
   }
   
   /**
@@ -150,6 +154,27 @@ public class BackDoorModel extends Observable
   protected Basket makeBasket()
   {
     return new Basket();
+  }
+
+  public String[] generateComboItems() throws StockException {
+    ArrayList<String> output = new ArrayList<>();
+    boolean comboFull = false; /* Flag for while loop, set true when ID not found in database */
+    int index = 1; /* Index starts at 1 as first product ID is '0001' */
+
+    while (!comboFull) {
+      String productID = "000" + String.valueOf(index); /* Appending leading 0s for ID */
+      productID = productID.substring(productID.length()-4);  /* sets ID to 4 digits, trimming excess 0s */
+
+      /* Checks ID is in database, adds to combo if it is, or ends while loop if it's not */
+      if (theStock.exists(productID)) {
+        output.add(productID);
+      } else {
+        comboFull = true;
+      }
+      index++;
+
+    }
+    return output.toArray(new String[0]);
   }
 
   public void returnButton() {

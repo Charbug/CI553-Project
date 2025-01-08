@@ -25,8 +25,9 @@ public class BackDoorView implements Observer
 
   private final JLabel      pageTitle  = new JLabel();
   private final JLabel      theAction  = new JLabel();
-  private final JTextField  theInput   = new JTextField();
-  private final JTextField  theInputNo = new JTextField();
+  private final JComboBox<String> theComboBox = new JComboBox<>();
+  SpinnerModel spinnerValues = new SpinnerNumberModel(1, 0, 99, 1);
+  private final JSpinner  theInputNo = new JSpinner(spinnerValues);
   private final JTextArea   theOutput  = new JTextArea();
   private final JScrollPane theSP      = new JScrollPane();
   private final JButton     theBtClear = new JButton( CLEAR );
@@ -68,13 +69,12 @@ public class BackDoorView implements Observer
     
     theBtQuery.setBounds( 16, 25+60*0, 80, 40 );    // Buy button 
     theBtQuery.addActionListener(                   // Call back code
-      e -> cont.doQuery( theInput.getText() ) );
+      e -> cont.doQuery((String) theComboBox.getSelectedItem()) );
     cp.add( theBtQuery );                           //  Add to canvas
 
     theBtRStock.setBounds( 16, 25+60*1, 80, 40 );   // Check Button
     theBtRStock.addActionListener(                  // Call back code
-      e -> cont.doRStock( theInput.getText(),
-                          theInputNo.getText() ) );
+      e -> cont.doRStock((String) theComboBox.getSelectedItem(), theInputNo.getValue()) );
     cp.add( theBtRStock );                          //  Add to canvas
 
     theBtClear.setBounds( 16, 25+60*2, 80, 40 );    // Buy button 
@@ -92,12 +92,11 @@ public class BackDoorView implements Observer
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas
 
-    theInput.setBounds( 110, 50, 120, 40 );         // Input Area
-    theInput.setText("");                           // Blank
-    cp.add( theInput );                             //  Add to canvas
-    
+    theComboBox.setBounds( 110, 50, 120, 40 );         // Input Area
+    cp.add(theComboBox);                             //  Add to canvas
+
+
     theInputNo.setBounds( 260, 50, 120, 40 );       // Input Area
-    theInputNo.setText("0");                        // 0
     cp.add( theInputNo );                           //  Add to canvas
 
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
@@ -106,7 +105,7 @@ public class BackDoorView implements Observer
     cp.add( theSP );                                //  Add to canvas
     theSP.getViewport().add( theOutput );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
-    theInput.requestFocus();                        // Focus is here
+    theComboBox.requestFocus();                        // Focus is here
   }
   
   public void setController( BackDoorController c )
@@ -127,7 +126,23 @@ public class BackDoorView implements Observer
     theAction.setText( message );
     
     theOutput.setText( model.getBasket().getDetails() );
-    theInput.requestFocus();
+    theComboBox.requestFocus();
   }
 
+  public void populateComboBox(String[] list) {
+    for (String id : list) {
+      theComboBox.addItem( id );
+    }
+  }
+
+  public void updateSpinner(int value) {
+    theInputNo.setValue(value);
+  }
+
+  public void clearView() {
+    theComboBox.setSelectedIndex( 0 );
+    int defaultValue = 1;
+    theInputNo.setValue(defaultValue);
+  }
 }
+

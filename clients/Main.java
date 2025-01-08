@@ -122,7 +122,7 @@ class Main {
      *
      * @param mlf A factory to create objects to access the stock list
      */
-    public void startBackDoorGUI_MVC(MiddleFactory mlf) {
+    public void startBackDoorGUI_MVC(MiddleFactory mlf) throws StockException {
         JFrame window = new JFrame();
 
         window.setTitle("BackDoor Client MVC");
@@ -133,6 +133,7 @@ class Main {
         BackDoorView view = new BackDoorView(window, mlf, pos.width, pos.height);
         BackDoorController cont = new BackDoorController(model, view);
         view.setController(cont);
+        view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible

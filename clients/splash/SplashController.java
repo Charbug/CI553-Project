@@ -8,17 +8,14 @@ package clients.splash;
 public class SplashController
 {
   private SplashModel model = null;
-  private SplashView view  = null;
 
-  /**
+    /**
    * Constructor
-   * @param model The model 
-   * @param view  The view from which the interaction came
+   * @param model The model
    */
   public SplashController(SplashModel model, SplashView view )
   {
-    this.view  = view;
-    this.model = model;
+      this.model = model;
   }
 
   /**

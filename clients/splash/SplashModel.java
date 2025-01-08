@@ -21,9 +21,9 @@ public class SplashModel extends Observable {
     private State theState = State.process;   // Current state
     private StockReadWriter theStock = null;
     private OrderProcessing theOrder = null;
-    private MiddleFactory midFact = null;
 
-    private HashMap<String, JFrame> screenHashMap = new HashMap<>();
+
+    private MiddleFactory midFact = null; // Storing for navigation between screens
 
     /**
      * Construct the model of the Cashier
@@ -38,8 +38,6 @@ public class SplashModel extends Observable {
             theOrder = mf.makeOrderProcessing();        // Process order
             midFact = mf;
 
-            screenHashMap.put("Cashier", mf.getFrame("cashierFrame"));
-            screenHashMap.put("Splash", mf.getFrame("splashFrame"));
         } catch (Exception e) {
             DEBUG.error("CashierModel.constructor\n%s", e.getMessage());
         }
