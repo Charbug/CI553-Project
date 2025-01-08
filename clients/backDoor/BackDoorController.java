@@ -34,7 +34,7 @@ public class BackDoorController
    * @param pn       The product number to be re-stocked
    * @param quantity The quantity to be re-stocked
    */
-  public void doRStock( String pn, String quantity )
+  public void doRStock( String pn, Object quantity )
   {
     model.doRStock(pn, quantity);
   }
@@ -44,9 +44,9 @@ public class BackDoorController
    */
   public void doClear()
   {
+    view.clearView();
     model.doClear();
   }
-
   public void returnButton() { model.returnButton(); }
 }
 
