@@ -26,7 +26,6 @@ public class CashierModel extends Observable {
 
     /**
      * Construct the model of the Cashier
-     *
      * @param mf The factory to create the connection objects
      */
 
@@ -223,6 +222,7 @@ public class CashierModel extends Observable {
     /**
      * Navigates to Splash Screen
      */
+
     public void returnButton() {
         midFact.getFrame("cashierFrame").setVisible(false);
         midFact.getFrame("splashFrame").setVisible(true);

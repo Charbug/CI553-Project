@@ -15,6 +15,11 @@ import javax.swing.*;
  */
 public class CustomerClient
 {
+
+  /**
+   *  Customer Client
+   * @throws StockException Stock Exception if stock cannot be accessed
+   */
   public static void main (String args[]) throws StockException {
     String stockURL = args.length < 1         // URL of stock R
                     ? Names.STOCK_R           //  default  location

@@ -27,10 +27,11 @@ public class CustomerModel extends Observable
   private ImageIcon       thePic       = null;
   private MiddleFactory  midFact   = null;
 
-  /*
+  /**
    * Construct the model of the Customer
    * @param mf The factory to create the connection objects
    */
+
   public CustomerModel(MiddleFactory mf)
   {
     try                                          // 
@@ -134,8 +135,12 @@ public class CustomerModel extends Observable
     return new Basket();
   }
 
+  /**
+   * Generates a list of IDs to populate the ID Combobox
+   * @return a String[] of IDs
+   * @throws StockException Stock Exception if stock cannot be accessed
+   */
 
-  /* Creating Array of Product ID's to populate Combo Box in view */
   public String[] generateComboItems() throws StockException {
     ArrayList<String> output = new ArrayList<String>();
     boolean comboFull = false; /* Flag for while loop, set true when ID not found in database */
@@ -156,6 +161,10 @@ public class CustomerModel extends Observable
     }
     return output.toArray(new String[0]);
   }
+
+  /**
+   * Navigates to Splash Screen
+   */
 
   public void returnButton() {
     midFact.getFrame("customerFrame").setVisible(false);

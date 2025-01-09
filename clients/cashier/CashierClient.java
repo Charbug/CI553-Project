@@ -16,7 +16,8 @@ public class CashierClient
 {
 
     /**
-     *  Backdoor Client
+     *  Cashier Client
+     * @throws StockException Stock Exception if stock cannot be accessed
      */
    public static void main (String args[]) throws StockException {
      String stockURL = args.length < 1     // URL of stock RW

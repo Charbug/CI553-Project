@@ -41,11 +41,18 @@ public class CustomerController
   }
 
   /**
-   * Populates Combobox with ID's from the database
+   * Populate Combobox with IDs from the database
+   * @throws StockException Stock Exception if stock cannot be accessed
    */
+
   public void populateComboBox() throws StockException {
     view.populateComboBox(model.generateComboItems());
   }
+
+  /**
+   * Navigates to Splash Screen
+   */
+
   public void returnButton() {
     doClear();
     model.returnButton(); }
