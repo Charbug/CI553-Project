@@ -44,176 +44,40 @@ public class SplashModel extends Observable {
         theState = State.process;                  // Current state
     }
 
+    /**
+     * Navigates to Cashier Screen
+     */
 
     public void loadCashier() {
-/*
-        String theAction = "";
-        theState = State.process;                  // State process
-        pn = productNum.trim();                    // Product no.
-        int amount = 1;                         //  & quantity
-        try {
-            if (theStock.exists(pn))              // Stock Exists?
-            {                                         // T
-                Product pr = theStock.getDetails(pn);   //  Get details
-                if (pr.getQuantity() >= amount)       //  In stock?
-                {                                       //  T
-                    theAction =                           //   Display
-                            String.format("%s : %7.2f (%2d) ", //
-                                    pr.getDescription(),              //    description
-                                    pr.getPrice(),                    //    price
-                                    pr.getQuantity());               //    quantity
-                    theProduct = pr;                      //   Remember prod.
-                    theProduct.setQuantity(amount);     //    & quantity
-                    theState = State.checked;             //   OK await BUY
-                } else {                                //  F
-                    theAction =                           //   Not in Stock
-                            pr.getDescription() + " not in stock";
-                }
-            } else {                                  // F Stock exists
-                theAction =                             //  Unknown
-                        "Unknown product number " + pn;       //  product no.
-            }
-        } catch (StockException e) {
-            DEBUG.error("%s\n%s",
-                    "CashierModel.doCheck", e.getMessage());
-            theAction = e.getMessage();
-        }
-        setChanged();
-        notifyObservers(theAction);
- */
-        JFrame frame = midFact.getFrame("splashFrame");
-        frame.setVisible(false);
-        frame = midFact.getFrame("cashierFrame");
-        frame.setVisible(true);
+        midFact.getFrame("splashFrame").setVisible(false);;
+        midFact.getFrame("cashierFrame").setVisible(true);
     }
+
+    /**
+     * Navigates to Customer Screen
+     */
 
     public void loadCustomer()  {
-/*
-        String theAction = "";
-        theState = State.process;                  // State process
-        pn = productNum.trim();                    // Product no.
-        int amount = 1;                         //  & quantity
-        try {
-            if (theStock.exists(pn))              // Stock Exists?
-            {                                         // T
-                Product pr = theStock.getDetails(pn);   //  Get details
-                if (pr.getQuantity() >= amount)       //  In stock?
-                {                                       //  T
-                    theAction =                           //   Display
-                            String.format("%s : %7.2f (%2d) ", //
-                                    pr.getDescription(),              //    description
-                                    pr.getPrice(),                    //    price
-                                    pr.getQuantity());               //    quantity
-                    theProduct = pr;                      //   Remember prod.
-                    theProduct.setQuantity(amount);     //    & quantity
-                    theState = State.checked;             //   OK await BUY
-                } else {                                //  F
-                    theAction =                           //   Not in Stock
-                            pr.getDescription() + " not in stock";
-                }
-            } else {                                  // F Stock exists
-                theAction =                             //  Unknown
-                        "Unknown product number " + pn;       //  product no.
-            }
-        } catch (StockException e) {
-            DEBUG.error("%s\n%s",
-                    "CashierModel.doCheck", e.getMessage());
-            theAction = e.getMessage();
-        }
-        setChanged();
-        notifyObservers(theAction);
- */
-        JFrame frame = midFact.getFrame("splashFrame");
-        frame.setVisible(false);
-        frame = midFact.getFrame("customerFrame");
-        frame.setVisible(true);
+        midFact.getFrame("splashFrame").setVisible(false);
+        midFact.getFrame("customerFrame").setVisible(true);
     }
+
+    /**
+     * Navigates to Packing Screen
+     */
 
     public void loadPacking()  {
-/*
-        String theAction = "";
-        theState = State.process;                  // State process
-        pn = productNum.trim();                    // Product no.
-        int amount = 1;                         //  & quantity
-        try {
-            if (theStock.exists(pn))              // Stock Exists?
-            {                                         // T
-                Product pr = theStock.getDetails(pn);   //  Get details
-                if (pr.getQuantity() >= amount)       //  In stock?
-                {                                       //  T
-                    theAction =                           //   Display
-                            String.format("%s : %7.2f (%2d) ", //
-                                    pr.getDescription(),              //    description
-                                    pr.getPrice(),                    //    price
-                                    pr.getQuantity());               //    quantity
-                    theProduct = pr;                      //   Remember prod.
-                    theProduct.setQuantity(amount);     //    & quantity
-                    theState = State.checked;             //   OK await BUY
-                } else {                                //  F
-                    theAction =                           //   Not in Stock
-                            pr.getDescription() + " not in stock";
-                }
-            } else {                                  // F Stock exists
-                theAction =                             //  Unknown
-                        "Unknown product number " + pn;       //  product no.
-            }
-        } catch (StockException e) {
-            DEBUG.error("%s\n%s",
-                    "CashierModel.doCheck", e.getMessage());
-            theAction = e.getMessage();
-        }
-        setChanged();
-        notifyObservers(theAction);
- */
-        JFrame frame = midFact.getFrame("splashFrame");
-        frame.setVisible(false);
-        frame = midFact.getFrame("packingFrame");
-        frame.setVisible(true);
+        midFact.getFrame("splashFrame").setVisible(false);
+        midFact.getFrame("packingFrame").setVisible(true);
     }
+
+    /**
+     * Navigates to Backdoor Screen
+     */
 
     public void loadBackdoor()  {
-/*
-        String theAction = "";
-        theState = State.process;                  // State process
-        pn = productNum.trim();                    // Product no.
-        int amount = 1;                         //  & quantity
-        try {
-            if (theStock.exists(pn))              // Stock Exists?
-            {                                         // T
-                Product pr = theStock.getDetails(pn);   //  Get details
-                if (pr.getQuantity() >= amount)       //  In stock?
-                {                                       //  T
-                    theAction =                           //   Display
-                            String.format("%s : %7.2f (%2d) ", //
-                                    pr.getDescription(),              //    description
-                                    pr.getPrice(),                    //    price
-                                    pr.getQuantity());               //    quantity
-                    theProduct = pr;                      //   Remember prod.
-                    theProduct.setQuantity(amount);     //    & quantity
-                    theState = State.checked;             //   OK await BUY
-                } else {                                //  F
-                    theAction =                           //   Not in Stock
-                            pr.getDescription() + " not in stock";
-                }
-            } else {                                  // F Stock exists
-                theAction =                             //  Unknown
-                        "Unknown product number " + pn;       //  product no.
-            }
-        } catch (StockException e) {
-            DEBUG.error("%s\n%s",
-                    "CashierModel.doCheck", e.getMessage());
-            theAction = e.getMessage();
-        }
-        setChanged();
-        notifyObservers(theAction);
- */
-        JFrame frame = midFact.getFrame("splashFrame");
-        frame.setVisible(false);
-        frame = midFact.getFrame("backdoorFrame");
-        frame.setVisible(true);
+        midFact.getFrame("splashFrame").setVisible(false);
+        midFact.getFrame("backdoorFrame").setVisible(true);
     }
-
-
-
 }
   

@@ -107,8 +107,9 @@ public class CustomerView implements Observer
     rootWindow.setVisible( true );                  // Make visible);
   }
 
-   /**
+  /**
    * The controller object, used so that an interaction can be passed to the controller
+   * Populate Combobox is called here as it has to be invoked after the view and model are linked.
    * @param c   The controller
    */
 
@@ -137,12 +138,22 @@ public class CustomerView implements Observer
     }
     theOutput.setText( model.getBasket().getDetails() );
   }
+
+  /**
+   * Populate the combobox with IDs
+   * @param list   List of ID strings
+   */
+
   public void populateComboBox(String[] list) {
     for (String id : list) {
       theComboBox.addItem( id );
     }
   }
 
+  /**
+   * Resets Combo box value to the lowest index
+   */
+  
   public void doClear() {
     theComboBox.setSelectedIndex(0);
   }

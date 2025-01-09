@@ -40,6 +40,9 @@ public class CustomerController
     model.doClear();
   }
 
+  /**
+   * Populates Combobox with ID's from the database
+   */
   public void populateComboBox() throws StockException {
     view.populateComboBox(model.generateComboItems());
   }

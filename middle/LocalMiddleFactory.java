@@ -67,12 +67,31 @@ public class LocalMiddleFactory implements MiddleFactory
     return aOrder;
   }
 
+  /**
+   * Adds built frame to Hash Map for navigation purposes
+   * All users share this same object.
+   * @param name Frame Identifier - used as Hashmap key
+   * @param frame Built frame object - used as Hashmap Value
+   */
+
   public void addFrame(String name, JFrame frame){
     frameMap.put(name, frame);
   }
+
+  /**
+   * Gets frame from Hash Map for navigation purposes
+   * All users share this same object.
+   * @param name Frame Identifier - used as Hashmap key
+   */
 
   public JFrame getFrame(String name){
     return frameMap.get(name);
   }
 }
+
+
+
+
+
+
 

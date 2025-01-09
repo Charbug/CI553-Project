@@ -117,6 +117,7 @@ public class CashierView implements Observer
 
   /**
    * The controller object, used so that an interaction can be passed to the controller
+   * Populate Combobox is called here as it has to be invoked after the view and model are linked.
    * @param c   The controller
    */
 
@@ -143,6 +144,10 @@ public class CashierView implements Observer
       theOutput.setText( basket.getDetails() );
   }
 
+  /**
+   * Populate the combobox with IDs
+   * @param list   List of ID strings
+   */
   public void populateComboBox(String[] list) {
     for (String id : list) {
       theComboBox.addItem( id );

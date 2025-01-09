@@ -68,7 +68,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model, ---view is observer, model is Observable
         window.setVisible(false);         // Make window visible
-        mlf.addFrame("customerFrame", window);
+        mlf.addFrame("customerFrame", window);  // Adds frame to Middle Factory Hash Map for navigation
     }
 
     /**
@@ -90,7 +90,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible
-        mlf.addFrame("cashierFrame", window);
+        mlf.addFrame("cashierFrame", window);  // Adds frame to Middle Factory Hash Map for navigation
         model.askForUpdate();            // Initial display
     }
 
@@ -114,7 +114,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible
-        mlf.addFrame("packingFrame", window);
+        mlf.addFrame("packingFrame", window);  // Adds frame to Middle Factory Hash Map for navigation
     }
 
     /**
@@ -136,11 +136,11 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible
-        mlf.addFrame("backdoorFrame", window);
+        mlf.addFrame("backdoorFrame", window);  // Adds frame to Middle Factory Hash Map for navigation
     }
 
     /**
-     * start the BackDoor client - store staff to check and update stock
+     * start the SplashScreen client - Home screen to navigate to the other screens
      *
      * @param mlf A factory to create objects to access the stock list
      */
@@ -157,7 +157,7 @@ class Main {
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(true);         // Make window visible
-        mlf.addFrame("splashFrame", window);
+        mlf.addFrame("splashFrame", window);  // Adds frame to Middle Factory Hash Map for navigation
     }
 
 
