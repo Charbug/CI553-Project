@@ -141,4 +141,8 @@ public class CustomerView implements Observer
       theComboBox.addItem( id );
     }
   }
+
+  public void doClear() {
+    theComboBox.setSelectedIndex(0);
+  }
 }

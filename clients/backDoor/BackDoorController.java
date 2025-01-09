@@ -47,6 +47,8 @@ public class BackDoorController
     view.clearView();
     model.doClear();
   }
-  public void returnButton() { model.returnButton(); }
+  public void returnButton() {
+    doClear();
+    model.returnButton(); }
 }
 
