@@ -27,20 +27,16 @@ public class CashierView implements Observer
   private static final String RETURN = "Return";
 
 
-  private final JLabel      pageTitle  = new JLabel();
-  private final JLabel      theAction  = new JLabel();
+    private final JLabel      theAction  = new JLabel();
   private final JComboBox<String>  theComboBox   = new JComboBox<>();
   SpinnerModel spinnerValues = new SpinnerNumberModel(1, 0, 99, 1);
   private final JSpinner  theInputNo = new JSpinner(spinnerValues);
   private final JTextArea   theOutput  = new JTextArea();
-  private final JScrollPane theSP      = new JScrollPane();
-  private final JButton     theBtCheck = new JButton( CHECK );
-  private final JButton     theBtBuy   = new JButton( BUY );
+    private final JButton     theBtBuy   = new JButton( BUY );
   private final JButton     theBtBought= new JButton( BOUGHT );
   private final JButton     theBtReturn = new JButton( RETURN );
 
-  private StockReadWriter theStock     = null;
-  private OrderProcessing theOrder     = null;
+    private OrderProcessing theOrder     = null;
   private CashierController cont       = null;
 
   
@@ -55,9 +51,9 @@ public class CashierView implements Observer
   public CashierView(  RootPaneContainer rpc,  MiddleFactory mf, int x, int y  )
   {
     try                                           // 
-    {      
-      theStock = mf.makeStockReadWriter();        // Database access
-      theOrder = mf.makeOrderProcessing();        // Process order
+    {
+        StockReadWriter theStock = mf.makeStockReadWriter();        // Database access
+        theOrder = mf.makeOrderProcessing();        // Process order
     } catch ( Exception e )
     {
       System.out.println("Exception: " + e.getMessage() );
@@ -70,14 +66,16 @@ public class CashierView implements Observer
 
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
 
-    pageTitle.setBounds( 110, 0 , 270, 20 );       
+      JLabel pageTitle = new JLabel();
+      pageTitle.setBounds( 110, 0 , 270, 20 );
     pageTitle.setText( "Thank You for Shopping at MiniStrore" );                        
-    cp.add( pageTitle );
-    
-    theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
+    cp.add(pageTitle);
+
+      JButton theBtCheck = new JButton(CHECK);
+      theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck( Objects.requireNonNull(theComboBox.getSelectedItem()).toString()) );
-    cp.add( theBtCheck );                           //  Add to canvas
+    cp.add(theBtCheck);                           //  Add to canvas
 
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
@@ -107,10 +105,11 @@ public class CashierView implements Observer
     theInputNo.setBounds( 260, 50, 120, 40 );       // Input Area
     cp.add( theInputNo );                           //  Add to canvas
 
-    theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
+      JScrollPane theSP = new JScrollPane();
+      theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
-    cp.add( theSP );                                //  Add to canvas
+    cp.add(theSP);                                //  Add to canvas
     theSP.getViewport().add( theOutput );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
   }

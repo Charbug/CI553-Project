@@ -1,13 +1,8 @@
 package clients.splash;
 
-import catalogue.BetterBasket;
-import catalogue.Product;
 import debug.DEBUG;
 import middle.*;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Observable;
 
 /**
@@ -16,12 +11,6 @@ import java.util.Observable;
 public class SplashModel extends Observable {
     public void askForUpdate() {
     }
-    private enum State {process, checked}
-
-    private State theState = State.process;   // Current state
-    private StockReadWriter theStock = null;
-    private OrderProcessing theOrder = null;
-
 
     private MiddleFactory midFact = null; // Storing for navigation between screens
 
@@ -34,14 +23,15 @@ public class SplashModel extends Observable {
     public SplashModel(MiddleFactory mf) {
         try                                           //
         {
-            theStock = mf.makeStockReadWriter();        // Database access
-            theOrder = mf.makeOrderProcessing();        // Process order
+            mf.makeStockReadWriter();// Database access
+            mf.makeOrderProcessing();// Process order
             midFact = mf;
 
         } catch (Exception e) {
             DEBUG.error("CashierModel.constructor\n%s", e.getMessage());
         }
-        theState = State.process;                  // Current state
+        // Current state
+        // Current state
     }
 
     /**
@@ -49,7 +39,7 @@ public class SplashModel extends Observable {
      */
 
     public void loadCashier() {
-        midFact.getFrame("splashFrame").setVisible(false);;
+        midFact.getFrame("splashFrame").setVisible(false);
         midFact.getFrame("cashierFrame").setVisible(true);
     }
 
@@ -72,7 +62,7 @@ public class SplashModel extends Observable {
     }
 
     /**
-     * Navigates to Backdoor Screen
+     * Navigates to Bac Screen
      */
 
     public void loadBackdoor()  {

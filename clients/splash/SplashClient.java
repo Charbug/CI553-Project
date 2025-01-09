@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class SplashClient
 {
-   public static void main (String args[])
+   public static void main (String[] args)
    {
      String stockURL = args.length < 1     // URL of stock RW
                      ? Names.STOCK_RW      //  default  location
@@ -37,8 +37,8 @@ public class SplashClient
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     
     SplashModel model = new SplashModel(mf);
-    SplashView view  = new SplashView( window, mf, 0, 0 );
-    SplashController cont  = new SplashController( model, view );
+    SplashView view  = new SplashView( window, 0, 0 );
+    SplashController cont  = new SplashController( model);
     view.setController( cont );
 
     model.addObserver( view );       // Add observer to the model

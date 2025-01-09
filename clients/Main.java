@@ -32,12 +32,12 @@ import java.awt.*;
  */
 
 class Main {
-    public static void main(String args[]) throws StockException {
+    public static void main(String[] args) throws StockException {
         new Main().begin();
     }
 
     /**
-     * Starts the system (Non distributed)
+     * Starts the system (Non-distributed)
      */
     public void begin() throws StockException {
         //DEBUG.set(true); /* Lots of debug info */
@@ -151,8 +151,8 @@ class Main {
         Dimension pos = PosOnScrn.getPos();
 
         SplashModel model = new SplashModel(mlf);
-        SplashView view = new SplashView(window, mlf, pos.width, pos.height);
-        SplashController cont = new SplashController(model, view);
+        SplashView view = new SplashView(window, pos.width, pos.height);
+        SplashController cont = new SplashController(model);
         view.setController(cont);
 
         model.addObserver(view);       // Add observer to the model

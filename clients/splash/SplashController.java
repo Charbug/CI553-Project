@@ -7,13 +7,13 @@ package clients.splash;
 
 public class SplashController
 {
-  private SplashModel model = null;
+  private final SplashModel model;
 
     /**
    * Constructor
    * @param model The model
    */
-  public SplashController(SplashModel model, SplashView view )
+  public SplashController(SplashModel model )
   {
       this.model = model;
   }

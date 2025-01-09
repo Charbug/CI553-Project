@@ -1,9 +1,5 @@
 package clients.splash;
 
-import middle.MiddleFactory;
-import middle.OrderProcessing;
-import middle.StockReadWriter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -23,30 +19,17 @@ public class SplashView implements Observer
   private static final String PACKING = "Packing";
   private static final String BACKDOOR    = "Backdoor";
 
-
-    private final JLabel      theAction  = new JLabel();
-
-
     private SplashController cont       = null;
   
   /**
    * Construct the view
    * @param rpc   Window in which to construct
-   * @param mf    Factor to deliver order and stock objects
    * @param x     x-coordinate of position of window on screen 
    * @param y     y-coordinate of position of window on screen  
    */
           
-  public SplashView(RootPaneContainer rpc, MiddleFactory mf, int x, int y  )
-  {
-    try                                           //
+  public SplashView(RootPaneContainer rpc, int x, int y  )
     {
-        StockReadWriter theStock = mf.makeStockReadWriter();        // Database access
-        OrderProcessing theOrder = mf.makeOrderProcessing();        // Process order
-    } catch ( Exception e )
-    {
-      System.out.println("Exception: " + e.getMessage() );
-    }
     Container cp         = rpc.getContentPane();    // Content Pane
     Container rootWindow = (Container) rpc;         // Root Window
     cp.setLayout(null);                             // No layout manager
