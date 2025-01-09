@@ -29,6 +29,8 @@ public class CashierView implements Observer
   private final JLabel      pageTitle  = new JLabel();
   private final JLabel      theAction  = new JLabel();
   private final JComboBox<String>  theComboBox   = new JComboBox<>();
+  SpinnerModel spinnerValues = new SpinnerNumberModel(1, 0, 99, 1);
+  private final JSpinner  theInputNo = new JSpinner(spinnerValues);
   private final JTextArea   theOutput  = new JTextArea();
   private final JScrollPane theSP      = new JScrollPane();
   private final JButton     theBtCheck = new JButton( CHECK );
@@ -69,16 +71,16 @@ public class CashierView implements Observer
 
     pageTitle.setBounds( 110, 0 , 270, 20 );       
     pageTitle.setText( "Thank You for Shopping at MiniStrore" );                        
-    cp.add( pageTitle );  
+    cp.add( pageTitle );
     
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
     theBtCheck.addActionListener(                   // Call back code
-      e -> cont.doCheck( Objects.requireNonNull(theComboBox.getSelectedItem()).toString() ) );
+      e -> cont.doCheck( Objects.requireNonNull(theComboBox.getSelectedItem()).toString()) );
     cp.add( theBtCheck );                           //  Add to canvas
 
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
-      e -> cont.doBuy() );
+      e -> cont.doBuy(theInputNo.getValue()) );
     cp.add( theBtBuy );                             //  Add to canvas
 
     theBtBought.setBounds( 16, 25+60*2, 80, 40 );   // Bought Button
@@ -97,8 +99,12 @@ public class CashierView implements Observer
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas
 
-    theComboBox.setBounds( 110, 50, 270, 40 );         // Product ID combo box (populated in Main)
-    cp.add( theComboBox );                             //  Add to canvas
+    theComboBox.setBounds( 110, 50, 120, 40 );         // Input Area
+    cp.add(theComboBox);                             //  Add to canvas
+
+
+    theInputNo.setBounds( 260, 50, 120, 40 );       // Input Area
+    cp.add( theInputNo );                           //  Add to canvas
 
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
     theOutput.setText( "" );                        //  Blank

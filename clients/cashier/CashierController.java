@@ -33,9 +33,9 @@ public class CashierController
    /**
    * Buy interaction from view
    */
-  public void doBuy()
+  public void doBuy(Object quantity)
   {
-    model.doBuy();
+    model.doBuy(quantity);
   }
   
    /**

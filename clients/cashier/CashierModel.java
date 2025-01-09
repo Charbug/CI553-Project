@@ -22,7 +22,7 @@ public class CashierModel extends Observable {
 
     private StockReadWriter theStock = null;
     private OrderProcessing theOrder = null;
-    private MiddleFactory  midFact   = null;
+    private MiddleFactory midFact = null;
 
     /**
      * Construct the model of the Cashier
@@ -73,7 +73,6 @@ public class CashierModel extends Observable {
                                     pr.getPrice(),                    //    price
                                     pr.getQuantity());               //    quantity
                     theProduct = pr;                      //   Remember prod.
-                    theProduct.setQuantity(amount);     //    & quantity
                     theState = State.checked;             //   OK await BUY
                 } else {                                //  F
                     theAction =                           //   Not in Stock
@@ -95,26 +94,32 @@ public class CashierModel extends Observable {
     /**
      * Buy the product
      */
-    public void doBuy() {
+    public void doBuy(Object quantity) {
+        int amountPurchased = (int) quantity;
         String theAction = "";
-        int amount = 1;                         //  & quantity
+
         try {
             if (theState != State.checked)          // Not checked
             {                                         //  with customer
                 theAction = "please check its availability";
             } else {
-                boolean stockBought =                   // Buy
-                        theStock.buyStock(                    //  however
-                                theProduct.getProductNum(),         //  may fail
-                                theProduct.getQuantity());         //
-                if (stockBought)                      // Stock bought
-                {                                       // T
-                    makeBasketIfReq();                    //  new Basket ?
-                    theBasket.add(theProduct);          //  Add to bought
-                    theAction = "Purchased " +            //    details
-                            theProduct.getDescription();  //
-                } else {                                // F
-                    theAction = "!!! Not in stock";       //  Now no stock
+                if (amountPurchased > theProduct.getQuantity()) {
+                    theAction = "Not enough stock!";
+                } else {
+                    theProduct.setQuantity(amountPurchased);
+                    boolean stockBought =                   // Buy
+                            theStock.buyStock(                    //  however
+                                    theProduct.getProductNum(),         //  may fail
+                                    amountPurchased);         //
+                    if (stockBought)                      // Stock bought
+                    {                                       // T
+                        makeBasketIfReq();                    //  new Basket ?
+                        theBasket.add(theProduct);          //  Add to bought
+                        theAction = "Purchased " +            //    details
+                                theProduct.getDescription();  //
+                    } else {                                // F
+                        theAction = "!!! Not in stock";       //  Now no stock
+                    }
                 }
             }
         } catch (StockException e) {
@@ -195,7 +200,7 @@ public class CashierModel extends Observable {
 
         while (!comboFull) {
             String productID = "000" + String.valueOf(index); /* Appending leading 0s for ID */
-            productID = productID.substring(productID.length()-4);  /* sets ID to 4 digits, trimming excess 0s */
+            productID = productID.substring(productID.length() - 4);  /* sets ID to 4 digits, trimming excess 0s */
 
             /* Checks ID is in database, adds to combo if it is, or ends while loop if it's not */
             if (theStock.exists(productID)) {

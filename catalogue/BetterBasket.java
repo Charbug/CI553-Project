@@ -23,7 +23,7 @@ public class BetterBasket extends Basket implements Serializable {
             /* If product exists, flip newProduct flag and increment existing product */
             if (current.getProductNum().equals(pr.getProductNum())) {
                 newProductFlag = false;
-                current.setQuantity(current.getQuantity() + 1);
+                current.setQuantity(current.getQuantity() + pr.getQuantity());
             }
         }
         /* Adds item to list if it doesn't exist, else returns false */
