@@ -135,10 +135,6 @@ public class BackDoorView implements Observer
     }
   }
 
-  public void updateSpinner(int value) {
-    theInputNo.setValue(value);
-  }
-
   public void clearView() {
     theComboBox.setSelectedIndex( 0 );
     int defaultValue = 1;
