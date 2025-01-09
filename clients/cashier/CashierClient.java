@@ -12,9 +12,12 @@ import javax.swing.*;
  * The standalone Cashier Client.
  */
 
-
 public class CashierClient
 {
+
+    /**
+     *  Backdoor Client
+     */
    public static void main (String args[]) throws StockException {
      String stockURL = args.length < 1     // URL of stock RW
                      ? Names.STOCK_RW      //  default  location

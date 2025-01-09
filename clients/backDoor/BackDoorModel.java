@@ -160,6 +160,7 @@ public class BackDoorModel extends Observable
   /**
    * Generates a list of IDs to populate the ID Combobox
    * @return a String[] of IDs
+   * @throws StockException Stock Exception if stock cannot be accessed
    */
   public String[] generateComboItems() throws StockException {
     ArrayList<String> output = new ArrayList<>();

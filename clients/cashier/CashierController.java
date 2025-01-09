@@ -34,6 +34,7 @@ public class CashierController
 
    /**
    * Buy interaction from view
+    * @param quantity amount purchased, Object from combobox
    */
   public void doBuy(Object quantity)
   {
@@ -50,6 +51,7 @@ public class CashierController
 
   /**
    * Populate Combobox with IDs from the database
+   * @throws StockException Stock Exception if stock cannot be accessed
    */
 
   public void populateComboBox() throws StockException {

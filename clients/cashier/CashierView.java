@@ -118,6 +118,7 @@ public class CashierView implements Observer
    * The controller object, used so that an interaction can be passed to the controller
    * Populate Combobox is called here as it has to be invoked after the view and model are linked.
    * @param c   The controller
+   * @throws StockException Stock Exception if stock cannot be accessed
    */
 
   public void setController( CashierController c ) throws StockException {

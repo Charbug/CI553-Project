@@ -93,6 +93,7 @@ public class CashierModel extends Observable {
 
     /**
      * Buy the product
+     * @param quantity amount of item purchased, Object from Combobox
      */
     public void doBuy(Object quantity) {
         int amountPurchased = (int) quantity;
@@ -192,7 +193,12 @@ public class CashierModel extends Observable {
         return new BetterBasket();
     }
 
-    /* Creating Array of Product ID's to populate Combo Box in view */
+    /**
+     * Generates a list of IDs to populate the ID Combobox
+     * @return a String[] of IDs
+     * @throws StockException Stock Exception if stock cannot be accessed
+     */
+
     public String[] generateComboItems() throws StockException {
         ArrayList<String> output = new ArrayList<String>();
         boolean comboFull = false; /* Flag for while loop, set true when ID not found in database */

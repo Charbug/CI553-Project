@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * Write a description of class BetterBasket here.
+ * BetterBasket, extension of Basket class that sorts by ID and can stack multiple orders
  *
  * @author Anon
  * @version 1.0
@@ -34,23 +34,25 @@ public class BetterBasket extends Basket implements Serializable {
         }
     }
 
-    /* Sorts item in basket display */
+    /**
+     *  Sorts item in basket display
+     */
     public void sortBasket() {
 
-        /* Creating Comparator class for Product items */
+        // Creating Comparator class for Product items
         class BasketComparator implements Comparator<Product> {
             public int compare(Product a, Product b) {
                 int intA = Integer.parseInt(a.getProductNum());
                 int intB = Integer.parseInt(b.getProductNum());
-                /* Gets int value of product codes and compares using Integer compare method */
+                // Gets int value of product codes and compares using Integer compare method
                 return Integer.compare(intA, intB);
             }
         }
 
-        this.sort(new BasketComparator());  /* Uses ArrayList sort method to sort by values generated from constructor */
+        this.sort(new BasketComparator());  // Uses ArrayList sort method to sort by values generated from constructor
     }
 
-    @Override /* Overrides getDetails function to sort list before generation */
+    @Override // Overrides getDetails function to sort list before generation
     public String getDetails() {
         sortBasket();
         return super.getDetails();
