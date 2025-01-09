@@ -4,6 +4,7 @@ package clients.packing;
 import middle.MiddleFactory;
 import middle.Names;
 import middle.RemoteMiddleFactory;
+import middle.StockException;
 
 import javax.swing.*;
 
@@ -16,6 +17,9 @@ import javax.swing.*;
  */
 public class PackingClient 
 {
+    /**
+     *  Packing Client
+     */
    public static void main (String args[])
    {
      String stockURL = args.length < 1     // URL of stock RW

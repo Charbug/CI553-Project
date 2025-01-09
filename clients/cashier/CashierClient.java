@@ -33,7 +33,11 @@ public class CashierClient
     displayGUI(mrf);                       // Create GUI
   }
 
-
+    /**
+     * Displays Cashier GUI
+     * @param mf Middle Factory
+     * @throws StockException Stock Exception if stock cannot be accessed
+     */
   private static void displayGUI(MiddleFactory mf) throws StockException {
     JFrame  window = new JFrame();
      

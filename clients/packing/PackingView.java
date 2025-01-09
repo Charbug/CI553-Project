@@ -3,6 +3,7 @@ package clients.packing;
 import catalogue.Basket;
 import middle.MiddleFactory;
 import middle.OrderProcessing;
+import middle.StockException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,7 +86,11 @@ public class PackingView implements Observer
     theSP.getViewport().add( theOutput );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
   }
-  
+  /**
+   * The controller object, used so that an interaction can be passed to the controller
+   * @param c   The controller
+   */
+
   public void setController( PackingController c )
   {
     cont = c;

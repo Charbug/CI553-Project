@@ -25,7 +25,7 @@ public class PackingModel extends Observable
   private StateOf         worker   = new StateOf();
   private MiddleFactory  midFact   = null;
 
-  /*
+  /**
    * Construct the model of the warehouse Packing client
    * @param mf The factory to create the connection objects
    */
@@ -149,6 +149,10 @@ public class PackingModel extends Observable
     }
     setChanged(); notifyObservers(theAction);
   }
+
+  /**
+   * Navigates to Splash Screen
+   */
 
   public void returnButton() {
     midFact.getFrame("packingFrame").setVisible(false);

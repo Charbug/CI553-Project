@@ -229,4 +229,3 @@ public class CashierModel extends Observable {
 
     }
 }
-  

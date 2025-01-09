@@ -29,6 +29,10 @@ public class PackingController
     model.doPacked();
   }
 
+  /**
+   * Navigates to Splash Screen
+   */
+
   public void returnButton() { model.returnButton(); }
 }
 
