@@ -3,6 +3,7 @@ package clients.splash;
 import middle.MiddleFactory;
 import middle.Names;
 import middle.RemoteMiddleFactory;
+import middle.StockException;
 
 import javax.swing.*;
 
@@ -13,6 +14,9 @@ import javax.swing.*;
 
 public class SplashClient
 {
+    /**
+     *  Splash Client
+     */
    public static void main (String[] args)
    {
      String stockURL = args.length < 1     // URL of stock RW
@@ -43,6 +47,5 @@ public class SplashClient
 
     model.addObserver( view );       // Add observer to the model
     window.setVisible(true);         // Display Screen
-    model.askForUpdate();
   }
 }

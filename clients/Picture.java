@@ -16,31 +16,46 @@ public class Picture extends Canvas {
     private int height = 260;
     private Image thePicture = null;
 
+    /**
+     * Initialisation of Picture
+     */
     public Picture() {
         setSize(width, height);
     }
-
+    /**
+     * Initialisation of Picture with given parameters
+     */
     public Picture(int aWidth, int aHeight) {
         width = aWidth;
         height = aHeight;
         setSize(width, height);
     }
 
+    /**
+     * Changes displayed image
+     */
     public void set(ImageIcon ic) {
         thePicture = ic.getImage();         // Image to be drawn
         repaint();
     }
-
+    /**
+     * Clears displayed image
+     */
     public void clear() {
         thePicture = null;                  // clear picture
         repaint();                          // Force repaint
     }
-
+    /**
+     * First drawing image
+     */
     public void paint(Graphics g)       // When 'Window' is first
     {                                     //  shown or damaged
         drawImage((Graphics2D) g);
     }
 
+    /**
+     * Updating image
+     */
     public void update(Graphics g)      // Called by repaint
     {                                     //
         drawImage((Graphics2D) g);        // Draw picture

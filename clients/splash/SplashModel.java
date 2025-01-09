@@ -9,9 +9,6 @@ import java.util.Observable;
  * Implements the Model of the cashier client
  */
 public class SplashModel extends Observable {
-    public void askForUpdate() {
-    }
-
     private MiddleFactory midFact = null; // Storing for navigation between screens
 
     /**
