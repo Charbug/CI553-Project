@@ -3,6 +3,7 @@ package clients.cashier;
 import catalogue.Basket;
 import middle.MiddleFactory;
 import middle.OrderProcessing;
+import middle.StockException;
 import middle.StockReadWriter;
 
 import javax.swing.*;
@@ -119,9 +120,9 @@ public class CashierView implements Observer
    * @param c   The controller
    */
 
-  public void setController( CashierController c )
-  {
+  public void setController( CashierController c ) throws StockException {
     cont = c;
+    cont.populateComboBox();
   }
 
   /**

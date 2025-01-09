@@ -1,6 +1,8 @@
 package clients.cashier;
 
 
+import middle.StockException;
+
 /**
  * The Cashier Controller
  */
@@ -46,5 +48,8 @@ public class CashierController
     model.doBought();
   }
 
+  public void populateComboBox() throws StockException {
+    view.populateComboBox(model.generateComboItems());
+  }
   public void returnButton() { model.returnButton(); }
 }

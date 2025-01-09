@@ -1,5 +1,7 @@
 package clients.customer;
 
+import middle.StockException;
+
 /**
  * The Customer Controller
  */
@@ -38,6 +40,9 @@ public class CustomerController
     model.doClear();
   }
 
+  public void populateComboBox() throws StockException {
+    view.populateComboBox(model.generateComboItems());
+  }
   public void returnButton() {
     doClear();
     model.returnButton(); }

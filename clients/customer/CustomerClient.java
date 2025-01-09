@@ -6,6 +6,7 @@ import clients.customer.CustomerView;
 import middle.MiddleFactory;
 import middle.Names;
 import middle.RemoteMiddleFactory;
+import middle.StockException;
 
 import javax.swing.*;
 
@@ -14,8 +15,7 @@ import javax.swing.*;
  */
 public class CustomerClient
 {
-  public static void main (String args[])
-  {
+  public static void main (String args[]) throws StockException {
     String stockURL = args.length < 1         // URL of stock R
                     ? Names.STOCK_R           //  default  location
                     : args[0];                //  supplied location
@@ -25,8 +25,7 @@ public class CustomerClient
     displayGUI(mrf);                          // Create GUI
   }
    
-  private static void displayGUI(MiddleFactory mf)
-  {
+  private static void displayGUI(MiddleFactory mf) throws StockException {
     JFrame  window = new JFrame();     
     window.setTitle( "Customer Client (MVC RMI)" );
     window.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );

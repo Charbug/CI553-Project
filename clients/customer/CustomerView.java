@@ -4,6 +4,7 @@ import catalogue.Basket;
 import catalogue.BetterBasket;
 import clients.Picture;
 import middle.MiddleFactory;
+import middle.StockException;
 import middle.StockReader;
 
 import javax.swing.*;
@@ -111,9 +112,9 @@ public class CustomerView implements Observer
    * @param c   The controller
    */
 
-  public void setController( CustomerController c )
-  {
+  public void setController( CustomerController c ) throws StockException {
     cont = c;
+    cont.populateComboBox();
   }
 
   /**

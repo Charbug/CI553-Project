@@ -4,6 +4,7 @@ import catalogue.*;
 import middle.MiddleFactory;
 import middle.Names;
 import middle.RemoteMiddleFactory;
+import middle.StockException;
 
 import javax.swing.*;
 
@@ -14,8 +15,7 @@ import javax.swing.*;
 
 public class CashierClient
 {
-   public static void main (String args[])
-   {
+   public static void main (String args[]) throws StockException {
      String stockURL = args.length < 1     // URL of stock RW
                      ? Names.STOCK_RW      //  default  location
                      : args[0];            //  supplied location
@@ -30,8 +30,7 @@ public class CashierClient
   }
 
 
-  private static void displayGUI(MiddleFactory mf)
-  {     
+  private static void displayGUI(MiddleFactory mf) throws StockException {
     JFrame  window = new JFrame();
      
     window.setTitle( "Cashier Client (MVC RMI)");
