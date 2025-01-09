@@ -22,7 +22,7 @@ public class BackDoorModel extends Observable
   private StockReadWriter theStock     = null;
   private MiddleFactory  midFact   = null;
 
-  /*
+  /**
    * Construct the model of the back door client
    * @param mf The factory to create the connection objects
    */
@@ -156,6 +156,11 @@ public class BackDoorModel extends Observable
     return new Basket();
   }
 
+
+  /**
+   * Generates a list of IDs to populate the ID Combobox
+   * @return a String[] of IDs
+   */
   public String[] generateComboItems() throws StockException {
     ArrayList<String> output = new ArrayList<>();
     boolean comboFull = false; /* Flag for while loop, set true when ID not found in database */
@@ -176,6 +181,10 @@ public class BackDoorModel extends Observable
     }
     return output.toArray(new String[0]);
   }
+
+  /**
+   * Navigates to Splash Screen
+   */
 
   public void returnButton() {
     midFact.getFrame("backdoorFrame").setVisible(false);

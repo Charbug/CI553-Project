@@ -147,6 +147,7 @@ public class CashierView implements Observer
    * Populate the combobox with IDs
    * @param list   List of ID strings
    */
+
   public void populateComboBox(String[] list) {
     for (String id : list) {
       theComboBox.addItem( id );

@@ -32,10 +32,23 @@ public interface MiddleFactory
    */
   public StockReadWriter makeStockReadWriter() throws StockException;
 
-  /* TODO */
+
+  /**
+   * Adds built frame to Hash Map for navigation purposes
+   * All users share this same object.
+   * @param name Frame Identifier - used as Hashmap key
+   * @param frame Built frame object - used as Hashmap Value
+   */
+
   public void addFrame(String name, JFrame frame);
 
-  /* TODO */
+
+  /**
+   * Gets frame from Hash Map for navigation purposes
+   * All users share this same object.
+   * @param name Frame Identifier - used as Hashmap key
+   */
+
   public JFrame getFrame(String name);
 
   /**

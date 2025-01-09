@@ -50,9 +50,18 @@ public class BackDoorController
     model.doClear();
   }
 
+  /**
+   * Populate Combobox with IDs from the database
+   */
+
   public void populateComboBox() throws StockException {
     view.populateComboBox(model.generateComboItems());
   }
+
+  /**
+   * Navigates to Splash Screen
+   */
+
   public void returnButton() {
     doClear();
     model.returnButton(); }

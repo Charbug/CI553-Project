@@ -108,7 +108,14 @@ public class BackDoorView implements Observer
     rootWindow.setVisible( true );                  // Make visible
     theComboBox.requestFocus();                        // Focus is here
   }
-  
+
+
+  /**
+   * The controller object, used so that an interaction can be passed to the controller
+   * Populate Combobox is called here as it has to be invoked after the view and model are linked.
+   * @param c   The controller
+   */
+
   public void setController( BackDoorController c ) throws StockException {
     cont = c;
     cont.populateComboBox();
@@ -130,11 +137,21 @@ public class BackDoorView implements Observer
     theComboBox.requestFocus();
   }
 
+  /**
+   * Populate the combobox with IDs
+   * @param list   List of ID strings
+   */
+
   public void populateComboBox(String[] list) {
     for (String id : list) {
       theComboBox.addItem( id );
     }
   }
+
+
+  /**
+   * Resets objects on screen to initial state
+   */
 
   public void clearView() {
     theComboBox.setSelectedIndex( 0 );

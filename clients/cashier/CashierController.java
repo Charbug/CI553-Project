@@ -51,6 +51,7 @@ public class CashierController
   /**
    * Populate Combobox with IDs from the database
    */
+
   public void populateComboBox() throws StockException {
     view.populateComboBox(model.generateComboItems());
   }
@@ -58,5 +59,6 @@ public class CashierController
   /**
    * Navigates to Splash Screen
    */
+
   public void returnButton() { model.returnButton(); }
 }
