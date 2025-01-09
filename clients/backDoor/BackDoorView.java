@@ -1,6 +1,7 @@
 package clients.backDoor;
 
 import middle.MiddleFactory;
+import middle.StockException;
 import middle.StockReadWriter;
 
 import javax.swing.*;
@@ -108,9 +109,9 @@ public class BackDoorView implements Observer
     theComboBox.requestFocus();                        // Focus is here
   }
   
-  public void setController( BackDoorController c )
-  {
+  public void setController( BackDoorController c ) throws StockException {
     cont = c;
+    cont.populateComboBox();
   }
 
   /**

@@ -64,7 +64,7 @@ class Main {
         CustomerView view = new CustomerView(window, mlf, pos.width, pos.height);
         CustomerController cont = new CustomerController(model, view);
         view.setController(cont);
-        view.populateComboBox(model.generateComboItems());
+
 
         model.addObserver(view);       // Add observer to the model, ---view is observer, model is Observable
         window.setVisible(false);         // Make window visible
@@ -86,7 +86,7 @@ class Main {
         CashierView view = new CashierView(window, mlf, pos.width, pos.height);
         CashierController cont = new CashierController(model, view);
         view.setController(cont);
-        view.populateComboBox(model.generateComboItems());
+
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible
@@ -133,7 +133,6 @@ class Main {
         BackDoorView view = new BackDoorView(window, mlf, pos.width, pos.height);
         BackDoorController cont = new BackDoorController(model, view);
         view.setController(cont);
-        view.populateComboBox(model.generateComboItems());
 
         model.addObserver(view);       // Add observer to the model
         window.setVisible(false);         // Make window visible

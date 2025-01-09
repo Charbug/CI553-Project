@@ -1,6 +1,8 @@
 package clients.backDoor;
 
 
+import middle.StockException;
+
 /**
  * The BackDoor Controller
  */
@@ -46,6 +48,10 @@ public class BackDoorController
   {
     view.clearView();
     model.doClear();
+  }
+
+  public void populateComboBox() throws StockException {
+    view.populateComboBox(model.generateComboItems());
   }
   public void returnButton() {
     doClear();
