@@ -24,8 +24,9 @@ import java.sql.SQLException;
   */
 public class StockRW extends StockR implements StockReadWriter 
 {
-  /*
+  /**
    * Connects to database
+   * @throws StockException StockException
    */
   public StockRW() throws StockException
   {    

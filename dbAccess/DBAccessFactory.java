@@ -26,10 +26,18 @@ public class DBAccessFactory
   private static String theDataBase = "";
   private static String theOS       = "";
 
+  /**
+   * Sets action
+   */
+
   public static void setAction( String name )
   {
     theAction = name;
   }
+
+  /**
+   * Sets environment
+   */
 
   private static String setEnvironment()
   {
