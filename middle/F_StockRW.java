@@ -26,6 +26,11 @@ public class F_StockRW extends F_StockR
   private RemoteStockRW_I aR_StockRW  = null;
   private String          theStockURL = null;
 
+  /**
+   * Constructor
+   * @param url URL String
+   */
+
   public F_StockRW( String url )
   {
     super( url );                                   // Not used

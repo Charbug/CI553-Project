@@ -33,33 +33,73 @@ public class Product implements Serializable {
         theQuantity = aQuantity;       // Quantity involved
     }
 
+    /**
+     *  Gets Product Number
+     * @return ProductNumber [String]
+     */
+
     public String getProductNum() {
         return theProductNum;
     }
+
+    /**
+     *  Gets description
+     * @return Description [String]
+     */
 
     public String getDescription() {
         return theDescription;
     }
 
+    /**
+     *  Gets price
+     * @return Price [double]
+     */
+
     public double getPrice() {
         return thePrice;
     }
+
+    /**
+     *  Gets quantity
+     * @return Quantity [int]
+     */
 
     public int getQuantity() {
         return theQuantity;
     }
 
+    /**
+     *  Sets Product Number
+     * @param  aProductNum Product Number [String]
+     */
+
     public void setProductNum(String aProductNum) {
         theProductNum = aProductNum;
     }
+
+    /**
+     *  Sets Description
+     * @param  aDescription Description [String]
+     */
 
     public void setDescription(String aDescription) {
         theDescription = aDescription;
     }
 
+    /**
+     *  Sets Price
+     * @param  aPrice Price [Double]
+     */
+
     public void setPrice(double aPrice) {
         thePrice = aPrice;
     }
+
+    /**
+     *  Sets Quantity
+     * @param  aQuantity Quantity [int]
+     */
 
     public void setQuantity(int aQuantity) {
         theQuantity = aQuantity;

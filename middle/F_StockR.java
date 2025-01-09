@@ -26,6 +26,11 @@ public class F_StockR implements StockReader
   private RemoteStockR_I aR_StockR   = null;
   private String         theStockURL = null;
 
+  /**
+   * Constructor
+   * @param url URL String
+   */
+
   public F_StockR( String url )
   {
     DEBUG.trace("F_StockR: %s", url );

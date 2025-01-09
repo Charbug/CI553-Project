@@ -24,11 +24,19 @@ public class F_Order implements OrderProcessing
   private RemoteOrder_I aR_Order    = null;
   private String        theOrderURL = null;
 
+  /**
+   * Constructor
+   * @param url URL String
+   */
   public F_Order(String url)
   {
     theOrderURL = url;
   }
-  
+
+  /**
+   * Connect to DB
+   * @throws OrderException OrderException
+   */
   private void connect() throws OrderException
   {
     try                                            // Setup
@@ -45,7 +53,11 @@ public class F_Order implements OrderProcessing
     }
   }
 
-
+  /**
+   * Create new order
+   * @param bought BetterBasket Object, supplies items to buy
+   * @throws OrderException OrderException
+   */
   public void newOrder( BetterBasket bought )
          throws OrderException
   {
@@ -61,6 +73,11 @@ public class F_Order implements OrderProcessing
     }
   }
 
+  /**
+   * Gets unique order number
+   * @return Unique Number
+   * @throws OrderException OrderException
+   */
   public int uniqueNumber()
          throws OrderException
   {

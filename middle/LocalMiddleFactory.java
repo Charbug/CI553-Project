@@ -28,7 +28,9 @@ public class LocalMiddleFactory implements MiddleFactory
   private static StockRW aStockRW = null;
   private static Order   aOrder   = null;
 
-  /* Hash Map of frames, allows for screen navigation */
+  /**
+   *  Hash Map of frames, allows for screen navigation
+   *  */
   public Map<String, JFrame> frameMap = new HashMap<String, JFrame>();
   
   /**
