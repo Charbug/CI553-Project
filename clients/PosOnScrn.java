@@ -14,11 +14,8 @@ class PosOnScrn
   
   private static final int maxX;  // Width of screen
   private static final int maxY;  // Height of screen
-  
-  private static int cX = 500; // Initial window pos on screen
-  private static int cY = 200; // Initial window pos on screen
-  
-  // class initialiser
+
+    // class initialiser
   //  Will be called (once) when the class is loaded
   static
   {
@@ -26,26 +23,8 @@ class PosOnScrn
     maxX = (int) dimension.getWidth();
     maxY = (int) dimension.getHeight();
   }
-  
-  /**
-   * Calculate position of next window
-   */
-  private static void next()
-  {
-     if ( cX + 2 * clientW > maxX )
-     {
-        if ( cY + 2 * clientH < maxY )
-        {
-            cX = 0; cY += clientH;
-        }
-     } else {
-         cX += clientW;
-     }
-     // No room on screen
-     // All new windows are tiled on top of each other
-  }
-  
-  /**
+
+    /**
    * return position for new window on screen
    *  slight misuse of the inbuilt Dimension class
    *  as used to hold an x,y co-ordinate pair
@@ -53,7 +32,10 @@ class PosOnScrn
    */
   public static Dimension getPos()
   {
-    Dimension pos = new Dimension( cX, cY );
-    return pos;
+      // Initial window pos on screen
+      int cY = 200;
+      // Initial window pos on screen
+      int cX = 500;
+      return new Dimension(cX, cY);
   }
 }

@@ -29,11 +29,6 @@ public class LocalMiddleFactory implements MiddleFactory
   private static Order   aOrder   = null;
 
   /**
-   *  Hash Map of frames, allows for screen navigation
-   *  */
-  public Map<String, JFrame> frameMap = new HashMap<String, JFrame>();
-  
-  /**
    * Return an object to access the database for read only access.
    * All users share this same object.
    */
@@ -68,6 +63,12 @@ public class LocalMiddleFactory implements MiddleFactory
       aOrder = new Order();
     return aOrder;
   }
+
+  /**
+   *  Hash Map of frames, allows for screen navigation
+   *  */
+
+  public Map<String, JFrame> frameMap = new HashMap<String, JFrame>();
 
   /**
    * Adds built frame to Hash Map for navigation purposes
