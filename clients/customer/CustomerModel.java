@@ -61,6 +61,7 @@ public class CustomerModel extends Observable
    */
   public void doCheck(String productNum )
   {
+    thePic = null;
     theBasket.clear();                          // Clear s. list
     String theAction = "";
     pn  = productNum.trim();                    // Product no.
